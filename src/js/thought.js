@@ -34,7 +34,7 @@ class Thought extends Phaser.Physics.Arcade.Image {
       {
         this.depth = 0;
         this.body.moves = true;
-        this.scene.physics.moveTo(this,this.scene.player.x-50, this.scene.player.y-220, 20);
+        this.scene.physics.moveTo(this,this.scene.player.x-50, this.scene.player.y-220, 5);
       });
     }
 
@@ -45,19 +45,24 @@ class Thought extends Phaser.Physics.Arcade.Image {
       if(x && y) {
         this.setPosition(x, y);
       } else {
-        const r = Math.random();
+        const pos = (() => {
+          const r = Math.random();
 
-        const pos = r < 0.5 ? {x:Phaser.Math.RND.between(0,300), y: -50} : {x:-50, y: Phaser.Math.RND.between(0,700)};
+          if(r < 0.33) return {x:Phaser.Math.RND.between(0,450), y: -25};
+          else if(r < 0.66) return {x:-25, y: Phaser.Math.RND.between(0,700)};
+          else return {x:Phaser.Math.RND.between(0,450), y: 725}
+        })();
+        
         this.setPosition(pos.x, pos.y);
       }
       
-      this.scene.physics.moveTo(this,this.scene.player.x-50, this.scene.player.y-220, 20);
+      this.scene.physics.moveTo(this,this.scene.player.x-50, this.scene.player.y-220, 5);
     }
 
     hitPlayer(player,monster) {
       if(this.body.moves) {
         this.scene.player.thoughtHit(this.texture);
-        this.reset();
+        this.destroy();
       }
     }
 
@@ -74,13 +79,6 @@ class Bread extends Thought {
 
   mix(t) {
     return t.texture === 'cheese';
-  }
-}
-
-class Tomato extends Thought {
-
-  constructor(scene) {
-    super(scene, 50, 50, 'tomato');
   }
 }
 
@@ -104,10 +102,10 @@ class Sandwich extends Thought {
 
 }
 
-class Boot extends Thought {
+class Backpack extends Thought {
 
   constructor(scene) {
-    super(scene, 50, 50, 'boot');
+    super(scene, 50, 50, 'backpack');
   }
 
 }
@@ -125,15 +123,37 @@ class Walk extends Thought {
   constructor(scene) {
     super(scene, 50, 50, 'walk');
   }
+}
 
+class Canvas extends Thought {
+
+  constructor(scene) {
+    super(scene, 50, 50, 'canvas');
+  }
+}
+
+class Pencil extends Thought {
+
+  constructor(scene) {
+    super(scene, 50, 50, 'pencil');
+  }
+}
+
+class Painting extends Thought {
+
+  constructor(scene) {
+    super(scene, 50, 50, 'painting');
+  }
 }
 
 export {
   Bread,
-  Tomato,
   Cheese,
   Sandwich,
-  Boot,
+  Backpack,
   Tree,
-  Walk
+  Walk,
+  Canvas,
+  Pencil,
+  Painting
 }

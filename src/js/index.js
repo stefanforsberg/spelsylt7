@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import LoadingScene from "./loadingScene";
 import MainScene from "./mainScene";
 
 const config = {
@@ -13,7 +14,7 @@ const config = {
   },
   pixelArt: true,
   parent: "game",
-  scene: [MainScene],
+  scene: [LoadingScene, MainScene],
   pixelArt: false,
   physics: {
     default: "arcade",

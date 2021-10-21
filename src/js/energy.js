@@ -4,7 +4,7 @@ export default class Energy {
 
     constructor(scene) {
       this.scene = scene;
-      this.x = 310;
+      this.x = 500-75;
       this.y = 640;
 
       
@@ -15,12 +15,7 @@ export default class Energy {
 
       this.lastState = "happy";
 
-      this.event = this.scene.time.addEvent({
-        delay: 100, 
-        callback: this.update,
-        callbackScope: this,
-        loop: true
-      });
+      this.update();
 
     }
 
@@ -30,10 +25,15 @@ export default class Energy {
 
     boost(b) {
       this.energy += b;
+
+      if(this.energy > 100) {
+        this.energy = 100;
+      }
+
+      this.update();
     }
 
     update() {
-      this.energy--;
 
       if(this.energy < 0) {
         this.energy = 100;
@@ -49,17 +49,16 @@ export default class Energy {
         this.scene.player.setMood("sad");
       }
       
-
       this.bar.clear();
 
       this.bar.fillStyle(0x000000);
-      this.bar.fillRect(this.x, this.y, 80, 16);
+      this.bar.fillRect(this.x, this.y, 150, 16);
 
       this.bar.fillStyle(0xffffff);
-      this.bar.fillRect(this.x + 2, this.y + 2, 76, 12);
+      this.bar.fillRect(this.x + 2, this.y + 2, 146, 12);
 
       this.bar.fillStyle(0xff00ff);
 
-      this.bar.fillRect(this.x + 2, this.y + 2, Math.ceil(76*(this.energy/100)), 12);
+      this.bar.fillRect(this.x + 2, this.y + 2, Math.ceil(146*(this.energy/100)), 12);
     }
 }
