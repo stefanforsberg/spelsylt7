@@ -49,7 +49,7 @@ export default class Tower {
 
     this.graphics.on("pointerdown", (pointer, localX) => {
 
-      if(this.scene.energy.energy < 5) {
+      if(this.scene.energy.energy <= 15) {
         return;    
       }
 
@@ -108,7 +108,7 @@ export default class Tower {
         b.gameObject.destroy();
       });
 
-      this.scene.physics.moveTo(bullet, monster.x, monster.y, 100);
+      this.scene.physics.moveTo(bullet, monster.x, monster.y, 150);
       
     } else {
       monster.pathTween.timeScale = 0.5;

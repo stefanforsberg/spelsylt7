@@ -1,6 +1,8 @@
 import Phaser from "phaser";
 import imgRuna from "../img/runa.png";
 import imgRunaSad from "../img/runa_sad.png";
+import imgRunaAngry from "../img/runa_angry.png";
+import imgRunaHopeless from "../img/runa_hopeless.png";
 import imgMonster1 from "../img/monster1.png";
 import imgBg from "../img/bg.png";
 import imgCheese from "../img/cheese.png";
@@ -40,6 +42,8 @@ export default class LoadingScene extends Phaser.Scene {
 
     this.load.image("runa_happy", imgRuna);
     this.load.image("runa_sad", imgRunaSad);
+    this.load.image("runa_angry", imgRunaAngry);
+    this.load.image("runa_hopeless", imgRunaHopeless);
     this.load.image("monster1", imgMonster1);
     this.load.image("cheese", imgCheese);
     this.load.image("bread", imgBread);

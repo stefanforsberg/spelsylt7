@@ -56,7 +56,7 @@ export default class Player extends Phaser.Physics.Arcade.Image {
   }
 
   reset() {
-    this.currentNeeds = [];
+    this.currentNeeds = "";
   }
 
   newNeed() {
@@ -98,7 +98,7 @@ export default class Player extends Phaser.Physics.Arcade.Image {
 
     this.need.alpha = 1;
 
-    this.currentNeeds.push(newNeed);
+    this.currentNeeds = newNeed;
   }
 
   setMood(mood) {
@@ -106,9 +106,9 @@ export default class Player extends Phaser.Physics.Arcade.Image {
   }
 
   thoughtHit(t) {
-    const i = this.currentNeeds.findIndex((n) => n === t.key);
+    const correctTought = this.currentNeeds === t.key;
 
-    if (i > -1) {
+    if (correctTought) {
 
       if(Math.random() > 0.5) {
         this.scene.sound.play("sfx", { name: "asd", start: 2, duration: 1, config: {} });
@@ -138,9 +138,7 @@ export default class Player extends Phaser.Physics.Arcade.Image {
         });
       }
 
-      this.currentNeeds.splice(i, 1);
-
-      this.newNeed();
+      
 
       this.scene.energy.boost(5);
     } else {
@@ -152,5 +150,7 @@ export default class Player extends Phaser.Physics.Arcade.Image {
 
       this.scene.energy.boost(-5);
     }
+
+    this.newNeed();
   }
 }

@@ -46,14 +46,25 @@ export default class Energy {
 
     update() {
 
-      if(this.energy > 50 && this.lastState !== "happy") {
-        this.lastState = "happy";
-        this.scene.player.setMood("happy");
-      }
-
-      if(this.energy < 50 && this.lastState !== "sad") {
-        this.lastState = "sad";
-        this.scene.player.setMood("sad");
+      if(this.energy > 50) {
+        if(this.lastState !== "happy") {
+          this.lastState = "happy";
+          this.scene.player.setMood("happy");
+        }
+      } 
+      else if(this.energy > 30) {
+        if(this.lastState !== "sad") {
+          this.lastState = "sad";
+          this.scene.player.setMood("sad");
+        }
+      } else if(this.energy > 15) {
+        if(this.lastState !== "angry") {
+          this.lastState = "angry";
+          this.scene.player.setMood("angry");
+        }
+      } else if(this.lastState !== "hopeless") {
+        this.lastState = "hopeless";
+        this.scene.player.setMood("hopeless");
       }
       
       this.bar.clear();
