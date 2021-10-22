@@ -45,19 +45,27 @@ class Thought extends Phaser.Physics.Arcade.Image {
 
       this.angle = Phaser.Math.RND.between(-3,3);
 
+      this.alpha = 0;
+
       if(x && y) {
         this.setPosition(x, y);
       } else {
         const pos = (() => {
           const r = Math.random();
 
-          if(r < 0.33) return {x:Phaser.Math.RND.between(0,450), y: -25};
-          else if(r < 0.66) return {x:-25, y: Phaser.Math.RND.between(0,700)};
-          else return {x:Phaser.Math.RND.between(0,450), y: 725}
+          if(r < 0.33) return {x:Phaser.Math.RND.between(0,450), y: 25};
+          else if(r < 0.66) return {x:25, y: Phaser.Math.RND.between(0,700)};
+          else return {x:Phaser.Math.RND.between(0,450), y: 675}
         })();
         
         this.setPosition(pos.x, pos.y);
       }
+
+      this.scene.tweens.add({
+        targets: [this],
+        alpha: 1,
+        duration: 1500
+      })
       
       this.scene.physics.moveTo(this,this.scene.player.x-50, this.scene.player.y-220, this.speed);
     }

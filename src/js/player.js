@@ -148,7 +148,7 @@ export default class Player extends Phaser.Physics.Arcade.Image {
         this.scene.sound.play("sfx", { name: "asd", start: 6, duration: 1, config: {} });
       }
 
-      this.scene.energy.boost(-5);
+      this.scene.energy.boost(-2);
     }
 
     this.newNeed();

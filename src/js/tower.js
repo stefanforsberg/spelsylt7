@@ -112,11 +112,15 @@ export default class Tower {
       
     } else {
       monster.pathTween.timeScale = 0.5;
+      monster.setTexture("monsterFreeze")
 
       this.scene.time.addEvent({
-        delay: 2000,
+        delay: 2500,
         callback: () => {
-          monster.pathTween.timeScale = 1;
+          if(monster.active) {
+            monster.pathTween.timeScale = 1;
+            monster.setTexture("monster1")
+          }
         },
         loop: false,
       });
