@@ -30,14 +30,21 @@ export default class Energy {
         this.energy = 100;
       }
 
+      if(this.energy <= 0) {
+        console.log(new Date().getTime())
+        console.log( this.scene.timeStart)
+        const time = Math.round((new Date().getTime() - this.scene.timeStart)/1000);
+        console.log(`${time} seconds has passed`)
+        this.scene.scene.start('ScoreScene', {time});
+        this.scene.game.sound.stopAll();
+        
+        
+      }
+
       this.update();
     }
 
     update() {
-
-      if(this.energy < 0) {
-        this.energy = 100;
-      }
 
       if(this.energy > 50 && this.lastState !== "happy") {
         this.lastState = "happy";

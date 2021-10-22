@@ -73,6 +73,8 @@ export default class Defense {
     this.path.lineTo(780, 540);
     this.path.lineTo(580, 540);
 
+    this.addNewMonster();
+
     this.timer = this.scene.time.addEvent({
       delay: 15000,
       callback: () => {
@@ -91,7 +93,7 @@ export default class Defense {
         if(this.monsterTimeToTarget > 20000) {
           this.monsterTimeToTarget-= 2000;
         }
-        this.monsterLife += 6;
+        this.monsterLife += 3;
         
       },
       loop: true,

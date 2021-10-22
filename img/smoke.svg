@@ -9,6 +9,9 @@
    id="svg1922"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
    sodipodi:docname="smoke.svg"
+   inkscape:export-filename="D:\dev\spelsylt7\src\img\smoke.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -27,7 +30,7 @@
      units="px"
      inkscape:zoom="49.773737"
      inkscape:cx="13.129414"
-     inkscape:cy="9.5934126"
+     inkscape:cy="9.5934127"
      inkscape:window-width="3440"
      inkscape:window-height="1377"
      inkscape:window-x="-8"
@@ -40,7 +43,7 @@
        inkscape:collect="always"
        id="linearGradient2253">
       <stop
-         style="stop-color:#000000;stop-opacity:1;"
+         style="stop-color:#370060;stop-opacity:1"
          offset="0"
          id="stop2249" />
       <stop

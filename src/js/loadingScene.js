@@ -21,15 +21,16 @@ import imgTowerGunSleeping from "../img/towerGunSleeping.png";
 import imgTowerEmpty from "../img/towerEmpty.png";
 import imgBullet from "../img/bullet.png";
 import imgTitle from "../img/title.png";
+import imgScore from "../img/score.png";
 import imgStar from "../img/star.png";
 import imgSmoke from "../img/smoke.png";
 import song01 from "url:../audio/song01.mp3"
 import sfx from "url:../audio/sfx.mp3"
 
-export default class Loadingcene extends Phaser.Scene {
+export default class LoadingScene extends Phaser.Scene {
   constructor() {
     super({
-      key: "Loadingcene",
+      key: "LoadingScene",
     });
   }
 
@@ -59,6 +60,7 @@ export default class Loadingcene extends Phaser.Scene {
     
     this.load.image("towerEmpty", imgTowerEmpty);
     this.load.image("title", imgTitle);
+    this.load.image("score", imgScore);
     
     this.load.image("bg", imgBg);
 
@@ -78,7 +80,9 @@ export default class Loadingcene extends Phaser.Scene {
     g.setInteractive();
     g.on("pointerdown", () => {
       g.disableInteractive();
-      this.scene.launch("MainScene")
+      
+      this.scene.start('MainScene', {caller: 'menu'});
+      
     })
   }
 }

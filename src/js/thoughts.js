@@ -17,34 +17,41 @@ export default class Thoughts {
     this.overlap(this.backpackAndTreeGroup, () => new thoughts.Walk(this.scene));
     this.overlap(this.canvasAndPencilGroup, () => new thoughts.Painting(this.scene));
 
+    this.scene.thoughtSpeed = 1;
+
     this.addNewThoughts();
 
     this.newThoughtsTimer = this.scene.time.addEvent({
       callback: this.addNewThoughts,
       callbackScope: this,
-      delay: 5000,
+      delay: 4000,
       loop: true,
     });
   }
 
   addNewThoughts() {
+
+    if(this.scene.thoughtSpeed < 15) {
+      this.scene.thoughtSpeed+=0.5;
+    }
+
     var r = Math.random();
 
-    if (r < 0.3) {
-      if (this.canvasAndPencilGroup.children.entries.length < 5) {
+    if (r < 0.33) {
+      if (this.canvasAndPencilGroup.getLength() < 8) {
         const i = Math.random() > 0.5 ? new thoughts.Canvas(this.scene) : new thoughts.Pencil(this.scene);
         this.canvasAndPencilGroup.add(i);
         i.reset();
       }
     }
-    if (r < 0.6) {
-      if (this.cheeseAndBreadGroup.children.entries.length < 5) {
+    if (r < 0.66) {
+      if (this.cheeseAndBreadGroup.getLength() < 8) {
         const i = Math.random() > 0.5 ? new thoughts.Bread(this.scene) : new thoughts.Cheese(this.scene);
         this.cheeseAndBreadGroup.add(i);
         i.reset();
       }
     } else {
-      if (this.backpackAndTreeGroup.children.entries.length < 5) {
+      if (this.backpackAndTreeGroup.getLength() < 8) {
         const i = Math.random() > 0.5 ? new thoughts.Backpack(this.scene) : new thoughts.Tree(this.scene);
         this.backpackAndTreeGroup.add(i);
         i.reset();

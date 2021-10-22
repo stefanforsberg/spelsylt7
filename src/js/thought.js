@@ -12,6 +12,8 @@ class Thought extends Phaser.Physics.Arcade.Image {
 
       this.scene.input.setDraggable(this.setInteractive());
 
+      this.speed = this.scene.thoughtSpeed;
+
       this.reset();
 
       
@@ -25,7 +27,8 @@ class Thought extends Phaser.Physics.Arcade.Image {
       {
         if(dragX < 500) {
           this.setPosition(dragX, dragY);
-          
+        } else {
+          this.setPosition(500, dragY);
         }
         
       });
@@ -34,7 +37,7 @@ class Thought extends Phaser.Physics.Arcade.Image {
       {
         this.depth = 0;
         this.body.moves = true;
-        this.scene.physics.moveTo(this,this.scene.player.x-50, this.scene.player.y-220, 5);
+        this.scene.physics.moveTo(this,this.scene.player.x-50, this.scene.player.y-220, this.speed);
       });
     }
 
@@ -56,7 +59,7 @@ class Thought extends Phaser.Physics.Arcade.Image {
         this.setPosition(pos.x, pos.y);
       }
       
-      this.scene.physics.moveTo(this,this.scene.player.x-50, this.scene.player.y-220, 5);
+      this.scene.physics.moveTo(this,this.scene.player.x-50, this.scene.player.y-220, this.speed);
     }
 
     hitPlayer(player,monster) {

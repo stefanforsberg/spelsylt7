@@ -17,6 +17,9 @@ export default class MainScene extends Phaser.Scene {
 
   create() {
 
+    this.timeStart = new Date().getTime();
+    console.log(this.timeStart)
+
     this.add.image(500,350,"bg")
 
     this.smokeParticles = this.add.particles('smoke');
